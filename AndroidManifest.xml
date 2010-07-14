@@ -19,6 +19,7 @@
         </activity>
 		<activity android:name="sky.zone.nearby"></activity>
 		<activity android:name="sky.zone.Mapa"></activity>
+		<activity android:name="sky.zone.Search"></activity>
     
 </application>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission><uses-sdk android:minSdkVersion="7" />

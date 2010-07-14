@@ -1,8 +1,11 @@
 package sky.zone;
 
+import java.io.IOException;
+
 import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +38,7 @@ public class skyzone extends TabActivity {
 	    
 	    mTabHost.setCurrentTab(0);
 	    
+	    CreateDabase();
 	   
 	    txtMiles = (EditText) findViewById(R.id.txt_miles);  
         btnLocate = (Button) findViewById(R.id.btn_locate);
@@ -64,9 +68,46 @@ public class skyzone extends TabActivity {
                       txtsearch.getText().toString() + "...";
                 Toast.makeText(getBaseContext(), str, 
                  Toast.LENGTH_SHORT).show();
+                
+                Bundle bundle = new Bundle();
+                bundle.putString("search", txtsearch.getText().toString());
+                
+                Intent search = new Intent(view.getContext(), Search.class);
+                search.putExtras(bundle);
+                startActivityForResult(search, 0);
 
             }
         });                
             	                	    
 	}
-}
+	
+	public void CreateDabase(){
+		
+		DataBaseHelper myDbHelper = new DataBaseHelper(this);
+        myDbHelper = new DataBaseHelper(this);
+ 
+        try {
+ 
+        	myDbHelper.createDataBase();
+ 
+ 	} catch (IOException ioe) {
+ 
+ 		throw new Error("Unable to create database");
+ 
+ 	}
+ 
+ 	try {
+ 
+ 		myDbHelper.openDataBase();
+ 
+ 	}catch(SQLException sqle){
+ 
+ 		throw sqle;
+ 
+ 	}
+
+		
+		
+	}
+	}
+	

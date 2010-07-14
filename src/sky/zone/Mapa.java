@@ -17,10 +17,6 @@ import com.google.android.maps.MyLocationOverlay;
 
 
 
- 
-    /** Called when the activity is first created. */
-
-
 public class Mapa extends MapActivity {
     /** Author Wagner Pinto */
 	
